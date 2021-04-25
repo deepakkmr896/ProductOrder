@@ -92,3 +92,4 @@ D:\Product_Orders\Product_Orders\Product_Orders\bin\Microsoft.CodeDom.Providers.
 D:\Product_Orders\Product_Orders\Product_Orders\obj\Debug\Product_Orders.csproj.CopyComplete
 D:\Product_Orders\Product_Orders\Product_Orders\obj\Debug\Product_Orders.dll
 D:\Product_Orders\Product_Orders\Product_Orders\obj\Debug\Product_Orders.pdb
+D:\Product_Orders\Product_Orders\Product_Orders\bin\EntityFramework.dll

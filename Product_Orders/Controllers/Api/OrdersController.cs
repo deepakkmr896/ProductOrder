@@ -1,6 +1,7 @@
 ﻿using Business.Business;
 using Factories.Factories;
 using Model.Models;
+using System;
 using System.Web.Http;
 using ViewModel;
 using ViewModel.ViewModels;
@@ -29,28 +30,44 @@ namespace Product_Orders.Controllers.Api
         }
         #endregion
 
+        #region Public API Methods
         [Route("api/SaveCustomerOrder"), HttpPost]
         public IHttpActionResult Post([FromBody] CustomerOrderViewModel cusomerOrderViewModel)
         {
-            // Convert the CustomerOrderViewModel data into CustomerOrder model entity
-            CustomerOrder customerOrder = this._customerOrderFactory.create(cusomerOrderViewModel);
+            try
+            {
+                // Convert the CustomerOrderViewModel data into CustomerOrder model entity
+                CustomerOrder customerOrder = this._customerOrderFactory.create(cusomerOrderViewModel);
 
-            // Save the Customer Order details into the Customer_Order table, here I have used the dummy method to return true
-            bool result = this._customerOrderBusiness.SaveCustomerOrder(customerOrder);
-            
-            return Ok(result);
+                // Save the Customer Order details into the Customer_Order table
+                bool result = this._customerOrderBusiness.SaveCustomerOrder(customerOrder);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         [Route("api/SaveOrderDetails"), HttpPost]
         public IHttpActionResult Post([FromBody] OrderDetailsViewModel orderDetailsViewModel)
         {
-            // Convert the OrderDetailsViewModel data into OrderDetails model entity
-            OrderDetails orderDetails = this._orderDetailsFactory.create(orderDetailsViewModel);
+            try
+            {
+                // Convert the OrderDetailsViewModel data into OrderDetails model entity
+                OrderDetails orderDetails = this._orderDetailsFactory.create(orderDetailsViewModel);
 
-            // Save the Order Details into the Order_Details table, here I have used the dummy method to return true
-            bool result = this._orderDetailsBusiness.SaveOrderDetails(orderDetails);
-            
-            return Ok(result);
+                // Save the Order Details into the Order_Details table
+                bool result = this._orderDetailsBusiness.SaveOrderDetails(orderDetails);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
+        #endregion
     }
 }
