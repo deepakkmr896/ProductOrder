@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,11 +130,29 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\CustomerOrderBusiness.cs" />
+    <Compile Include="Business\OrderDetailsBusiness.cs" />
     <Compile Include="Controllers\Api\OrdersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Factories\CustomerOrderFactory.cs" />
+    <Compile Include="Factories\OrderDetailsFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interface\Business\ICustomerOrderBusiness.cs" />
+    <Compile Include="Interface\Business\IOrderDetailsBusiness.cs" />
+    <Compile Include="Interface\Factory\ICustomerOrderFactory.cs" />
+    <Compile Include="Interface\Factory\IOrderDetailsFactory.cs" />
+    <Compile Include="Interface\Repository\ICutomerOrderRepository.cs" />
+    <Compile Include="Interface\Repository\IOrderDetailsRepository.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\CustomerOrder.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CustomerOrderRepository.cs" />
+    <Compile Include="Repository\OrderDetailsRepository.cs" />
+    <Compile Include="ViewModels\CustomerOrderViewModel.cs" />
+    <Compile Include="ViewModels\OrderDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -169,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -183,28 +207,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj">
-      <Project>{10e48f0c-c6c8-48a0-8852-b4feec87e588}</Project>
-      <Name>Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Factories\Factories.csproj">
-      <Project>{fd203c05-d89b-4399-9540-d5c7aff2f1e8}</Project>
-      <Name>Factories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interface\Interface.csproj">
-      <Project>{244b47d4-2d35-40dd-9ca1-8c0e5b09a41b}</Project>
-      <Name>Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{03b782e1-8161-4b4e-8275-a3d914a17852}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
-      <Project>{f735542f-684b-49b2-98a4-5d7fc7bbfd5d}</Project>
-      <Name>ViewModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
